@@ -191,18 +191,18 @@ int main() {
                     ObsY = (*itr).getPosition().y - ObsHeight;
                     ObsWidth = 69 * (*itr).getScale().x;
                 }
-                if(ObsX >= 40 && ObsX <= 40.4) {
+
+                if (ObsX >= 40 && ObsX <= 40.4) {
                     Game.score++;
                 }
-                Game.Score.setString(to_string(Game.score/2));
+    
                 if (fx + fw >= ObsX && fx <= ObsX + ObsWidth && fy <= ObsY + ObsHeight && fy + fh >= ObsY) {
                     Game.status = gameover;
                 }
             }
         }
-        
+
         if (Game.status == gameover) {
-            Game.score = 0;
             Game.Score.setPosition(190, 305);
             flappy.velocity = 0;
             flappy.gravity = 0;
@@ -212,9 +212,10 @@ int main() {
                 Game.status = waiting;
             }
         }
+
         Window.clear();
         Window.draw(Game.Background);
-       
+
         for (vector<Sprite>::iterator itr = Obstacles.begin(); itr != Obstacles.end(); itr++) {
             Window.draw(*itr);
         }
@@ -223,8 +224,6 @@ int main() {
 
         Window.draw(Game.Land[0]);
         Window.draw(Game.Land[1]);
-
-        Window.draw(Game.Score);
 
         if (Game.status == waiting) {
             Game.score = 0;
@@ -242,6 +241,9 @@ int main() {
             Game.PressEnter.setPosition(90, 380);
             Window.draw(Game.PressEnter);
         }
+
+        Window.draw(Game.Score);
+        Game.Score.setString(to_string(Game.score / 2));
 
         Window.display();
         MoveLand(deltaTime);
