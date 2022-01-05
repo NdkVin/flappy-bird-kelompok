@@ -2,7 +2,7 @@
 # Flappy Bird
 
 
-Same simple flappy bird using C++ language and SFML library.
+Simple flappy bird game using C++ language and SFML library.
 
 Used as a final project for the programming concept of UNS informatics students.
 
